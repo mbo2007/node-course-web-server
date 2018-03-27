@@ -1,12 +1,12 @@
 const express = require("express");
 const hbs = require("hbs");
 const fs = require("fs");
+const port = process.env.PORT || 3000;
 
 var app = express();
 
 hbs.registerPartials(__dirname + "/views/partials");
 app.set("view engine", "hbs");
-app.use(express.static(__dirname + "/public"))
 
 //app.use() = syntax for middleware use
 // req - object containing all info about request - http method, path, query parameters, app/browser/device
@@ -28,14 +28,18 @@ app.use(
     next();
     //next allows the page to continue to be served - without it, request would stall forever without response even though it reaches server
 });
-
+/*
 app.use(
     (req, res, next) => {
         res.render("maintenance.hbs", {
             pageTitle: "Uh Oh"
         });
     }
-);
+);*/
+
+// renders static files
+app.use(express.static(__dirname + "/public"))
+
 // registers helper function so that template can use JS function or access data
 hbs.registerHelper("getCurrentYear",
 () =>
@@ -71,3 +75,4 @@ app.get("/bad",
 });
 
 app.listen(3000);
+//3000 for local port
