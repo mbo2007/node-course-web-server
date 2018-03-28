@@ -74,5 +74,8 @@ app.get("/bad",
     })
 });
 
-app.listen(3000);
+app.listen(port, () =>
+{
+    console.log("Server is up on port" + port);
+});
 //3000 for local port
