@@ -69,7 +69,7 @@ app.get("/projects",
 
 (req, res) =>
 {
-    res.send({
+    res.render("projects.hbs", {
       pageTitle: "Projects"  
     })
 });
