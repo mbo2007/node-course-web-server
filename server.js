@@ -65,6 +65,15 @@ app.get("/about",
    }); 
 });
 
+app.get("/projects",
+
+(req, res) =>
+{
+    res.send({
+      pageTitle: "Projects"  
+    })
+});
+
 app.get("/bad",
 
 (req, res) =>
